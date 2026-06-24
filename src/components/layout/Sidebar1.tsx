@@ -13,7 +13,6 @@ const NAV_ITEMS = [
     label: "Dashboard",
     href: "/dashboard",
     exact: true,
-    accent: "brand" as const,
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -25,7 +24,6 @@ const NAV_ITEMS = [
     label: "Profile",
     href: "/dashboard/profile",
     exact: false,
-    accent: "brand" as const,
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -37,7 +35,6 @@ const NAV_ITEMS = [
     label: "Builder",
     href: "/builder",
     exact: false,
-    accent: "brand" as const,
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -49,23 +46,10 @@ const NAV_ITEMS = [
     label: "Portfolio",
     href: "/dashboard/portfolio",
     exact: false,
-    accent: "brand" as const,
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
           d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-      </svg>
-    ),
-  },
-  {
-    label: "Green",
-    href: "/dashboard/green",
-    exact: false,
-    accent: "green" as const,
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-          d="M12 3c-1.5 4-6 5.5-6 10a6 6 0 0012 0c0-4.5-4.5-6-6-10z" />
       </svg>
     ),
   },
@@ -90,14 +74,9 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         ${isOpen ? "translate-x-0" : "-translate-x-full"}
       `}
     >
-      {/* Nav links */}
       <nav className="flex-1 px-3 space-y-0.5">
         {NAV_ITEMS.map((item) => {
           const active = isActive(item.href, item.exact);
-          const accentClasses =
-            item.accent === "green"
-              ? "bg-green-500/10 text-green-400 border border-green-500/20"
-              : "bg-brand/10 text-brand border border-brand/20";
           return (
             <Link
               key={item.href}
@@ -105,10 +84,13 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
               onClick={onClose}
               className={`
                 flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150
-                ${active ? accentClasses : "text-gray-400 hover:text-white hover:bg-surface-border"}
+                ${active
+                  ? "bg-brand/10 text-brand border border-brand/20"
+                  : "text-gray-400 hover:text-white hover:bg-surface-border"
+                }
               `}
             >
-              <span className={active ? (item.accent === "green" ? "text-green-400" : "text-brand") : "text-gray-500 group-hover:text-white"}>
+              <span className={active ? "text-brand" : "text-gray-500 group-hover:text-white"}>
                 {item.icon}
               </span>
               {item.label}
@@ -116,6 +98,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           );
         })}
       </nav>
+
     </aside>
   );
 }

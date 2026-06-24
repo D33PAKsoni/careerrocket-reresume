@@ -1,4 +1,4 @@
-# ResumeAI — AI Resume & Portfolio Builder
+# ReResume — AI Resume & Portfolio Builder
 
 > Next.js 14 · Supabase · Claude Sonnet 4.6 · Tailwind CSS · Vercel
 
@@ -18,7 +18,7 @@
 
 ```bash
 git clone https://github.com/D33PAKsoni/careerrocket-reresume.git
-cd reresume
+cd careerrocket-reresume
 ```
 
 ### 2. Install dependencies
@@ -70,44 +70,14 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## Phase 1 Verification Checklist
-
-Run through these to confirm Phase 1 is working before moving to Phase 2:
-
-- [ ] Visit `http://localhost:3000` — landing page loads
-- [ ] Go to `/register` — fill in email + password → account created
-- [ ] Check Supabase dashboard → **Authentication → Users** — your user appears
-- [ ] Go to `/login` — sign in → redirected to `/dashboard`
-- [ ] While logged in, visit `/login` or `/register` → auto-redirected to `/dashboard`
-- [ ] Click **Sign out** → redirected to `/login`
-- [ ] While logged out, visit `/dashboard` → redirected to `/login`
-
----
-
-## Vercel Deployment
-
-### First deploy (Phase 1 only)
-
-1. Push this repo to GitHub
-2. Go to [vercel.com](https://vercel.com) → **Add New Project** → import your repo
-3. Vercel auto-detects Next.js — no build config needed
-4. Under **Environment Variables**, add:
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-5. Click **Deploy**
-
-### Subsequent phases
-
-Vercel auto-deploys on every push to `main`. Just push your code.
-
 ### Environment variables reference
 
 | Variable | Scope | Phase |
 |---|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | Public (browser) | 1 |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Public (browser) | 1 |
-| `SUPABASE_SERVICE_ROLE_KEY` | Server only — never expose to browser | 4 |
-| `ANTHROPIC_API_KEY` | Server only — never expose to browser | 6 |
+| `NEXT_PUBLIC_SUPABASE_URL` | Public (browser) | 
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Public (browser) | 
+| `SUPABASE_SERVICE_ROLE_KEY` | Server only — never expose to browser | 
+| `GEMINI_API_KEY` | Server only — never expose to browser | 
 
 ---
 
@@ -139,6 +109,5 @@ src/
 | Framework | Next.js 14 (App Router), TypeScript |
 | Styling | Tailwind CSS |
 | Auth & Database | Supabase (Auth, PostgreSQL, Storage) |
-| AI Generation | Claude Sonnet 4.6 (Phase 6+) |
-| Animation | GSAP + Three.js (Phase 9) |
+| AI Generation | Gemini 3.1 Flash Lite |
 | Hosting | Vercel |
